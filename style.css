@@ -1,0 +1,301 @@
+/* =========================================================
+   LIP診断 - Mirafolia
+   ベース基準幅: クイズ画面 = 800px / 結果画面 = 1125px
+   clamp(min, 基準幅に対するvw, 基準幅時のpx値) で
+   基準幅以上ではピクセル固定、以下では比率を保って縮小する
+   ========================================================= */
+
+:root {
+  --bg-pink: #f6dbe0;
+  --card-white: #ffffff;
+  --ink-black: #000000;
+  --heading-ink: #201614;
+  --sub-ink: #2b2622;
+  --desc-gray: #4b4b4b;
+
+  --font-mincho: 'Shippori Mincho', serif;
+  --font-sans: 'Noto Sans JP', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--ink-black);
+  background: var(--bg-pink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.screen {
+  display: none;
+  width: 100%;
+}
+
+.screen.active {
+  display: flex;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* =========================================================
+   Q1 / Q2 / Q3 共通スタイル（基準幅 800px）
+   ========================================================= */
+
+.quiz-screen {
+  min-height: 100vh;
+  background: var(--bg-pink);
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: clamp(28px, 11.625vw, 93px);
+  padding-bottom: clamp(24px, 7vw, 56px);
+  padding-left: clamp(12px, 2vw, 16px);
+  padding-right: clamp(12px, 2vw, 16px);
+}
+
+.quiz-screen .card {
+  width: clamp(280px, 83.875vw, 671px);
+  background: var(--card-white);
+  border-radius: clamp(10px, 2vw, 16px);
+  padding: clamp(14px, 5.875vw, 47px) clamp(16px, 8.375vw, 67px) clamp(20px, 9.5vw, 76px);
+}
+
+.q-number {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-mincho);
+  font-weight: 600;
+  font-size: clamp(34px, 9vw, 72px);
+  color: var(--ink-black);
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+.q-text {
+  margin: clamp(10px, 4.5vw, 36px) 0 0;
+  text-align: center;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: clamp(14px, 3.5vw, 28px);
+  color: var(--sub-ink);
+  letter-spacing: 0.02em;
+}
+
+.options {
+  margin-top: clamp(16px, 6vw, 48px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.875vw, 15px);
+}
+
+.option-btn {
+  width: 100%;
+  min-height: clamp(44px, 9.75vw, 78px);
+  background: var(--card-white);
+  border: 1px solid var(--ink-black);
+  border-radius: 0;
+  box-shadow: 3px 4px 9px rgba(0, 0, 0, 0.16);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(13px, 3.25vw, 26px);
+  color: var(--ink-black);
+  text-align: center;
+  padding: 0.6em 0.8em;
+  line-height: 1.4;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+}
+
+.option-btn:hover {
+  background-color: #fdf6f7;
+}
+
+.option-btn:active {
+  transform: translate(1px, 2px);
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.16);
+}
+
+.option-btn.selected {
+  background-color: #fbeaec;
+  border-width: 2px;
+}
+
+.back-link {
+  display: block;
+  margin: clamp(16px, 4vw, 32px) auto 0;
+  background: none;
+  border: none;
+  color: #8a8a8a;
+  font-size: clamp(12px, 2.25vw, 18px);
+  font-family: var(--font-sans);
+  padding: 0.4em 0.6em;
+}
+
+.back-link:hover {
+  color: #555;
+}
+
+/* =========================================================
+   結果画面（基準幅 1125px）
+   ========================================================= */
+
+.result-screen {
+  min-height: 100vh;
+  background: var(--card-white);
+  flex-direction: column;
+  align-items: center;
+}
+
+.result-card {
+  width: 100%;
+  max-width: 1125px;
+  background: var(--card-white);
+  padding-bottom: clamp(40px, 7.1vw, 80px);
+}
+
+.result-header {
+  background: var(--bg-pink);
+  border-bottom: 3px solid var(--ink-black);
+  padding: clamp(28px, 9.78vw, 110px) clamp(16px, 4vw, 45px) clamp(20px, 6.84vw, 77px);
+  text-align: center;
+}
+
+.result-header h1 {
+  margin: 0;
+  font-family: var(--font-mincho);
+  font-weight: 600;
+  font-size: clamp(26px, 5.33vw, 60px);
+  letter-spacing: 0.14em;
+  color: var(--heading-ink);
+  line-height: 1.3;
+}
+
+.result-body {
+  display: flex;
+  align-items: flex-start;
+  gap: clamp(24px, 9.42vw, 106px);
+  padding-top: clamp(28px, 8vw, 90px);
+  padding-left: clamp(20px, 20.71vw, 233px);
+  padding-right: clamp(20px, 18.13vw, 204px);
+}
+
+.product-col {
+  flex: 0 0 clamp(70px, 9.24vw, 104px);
+  width: clamp(70px, 9.24vw, 104px);
+}
+
+.product-col img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 126 / 656;
+  object-fit: contain;
+}
+
+.info-col {
+  flex: 1 1 clamp(200px, 42.49vw, 478px);
+  min-width: 0;
+}
+
+.lip-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 478 / 306;
+  object-fit: cover;
+}
+
+.swatch-row {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 1.96vw, 22px);
+  margin-top: clamp(14px, 2.31vw, 26px);
+}
+
+.swatch {
+  flex: 0 0 clamp(36px, 5.96vw, 67px);
+  width: clamp(36px, 5.96vw, 67px);
+  height: clamp(36px, 5.96vw, 67px);
+  border-radius: 50%;
+  background-image: radial-gradient(circle at 32% 28%, rgba(255,255,255,0.55), rgba(255,255,255,0) 45%);
+  background-color: var(--swatch-color, #cccccc);
+  background-blend-mode: overlay;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.05);
+}
+
+.product-title {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: clamp(16px, 2.67vw, 30px);
+  color: var(--ink-black);
+  letter-spacing: 0.03em;
+}
+
+.product-title #result-code {
+  margin-right: 0.5em;
+}
+
+.product-desc {
+  margin: clamp(18px, 4.62vw, 52px) 0 0;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: clamp(14px, 1.96vw, 22px);
+  line-height: 1.9;
+  color: var(--desc-gray);
+  white-space: pre-line;
+}
+
+.retry-btn {
+  display: block;
+  margin: clamp(32px, 6vw, 68px) auto 0;
+  width: clamp(220px, 34vw, 340px);
+  min-height: clamp(48px, 6.5vw, 64px);
+  background: var(--card-white);
+  border: 1px solid var(--ink-black);
+  box-shadow: 3px 4px 9px rgba(0, 0, 0, 0.16);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: clamp(14px, 2vw, 20px);
+  color: var(--ink-black);
+  text-align: center;
+  padding: 0.6em 0.8em;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+}
+
+.retry-btn:hover {
+  background-color: #fdf6f7;
+}
+
+.retry-btn:active {
+  transform: translate(1px, 2px);
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.16);
+}
+
+/* =========================================================
+   レスポンシブ（スマートフォン幅で自然に調整）
+   ========================================================= */
+
+@media (max-width: 480px) {
+  .result-body {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .product-col {
+    width: 96px;
+    flex: 0 0 auto;
+  }
+  .info-col {
+    width: 100%;
+  }
+}

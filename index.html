@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIP診断 | Mirafolia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ Q1 ============ -->
+<section class="screen quiz-screen" id="screen-q1">
+  <div class="card">
+    <h1 class="q-number">Q1</h1>
+    <p class="q-text">どんな印象になりたいですか？</p>
+    <div class="options" data-question="q1">
+      <button class="option-btn" data-type="A">やわらかく、自然体な印象</button>
+      <button class="option-btn" data-type="B">明るく、親しみやすい印象</button>
+      <button class="option-btn" data-type="C">上品で、きれいめな印象</button>
+      <button class="option-btn" data-type="D">おしゃれで、こなれた印象</button>
+      <button class="option-btn" data-type="E">華やかで、女性らしい印象</button>
+      <button class="option-btn" data-type="F">飾りすぎず、素の唇をきれいに見せたい</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Q2 ============ -->
+<section class="screen quiz-screen" id="screen-q2">
+  <div class="card">
+    <h1 class="q-number">Q2</h1>
+    <p class="q-text">どんな日に使いたいですか？</p>
+    <div class="options" data-question="q2">
+      <button class="option-btn" data-type="A">何気ない毎日に</button>
+      <button class="option-btn" data-type="B">休日や友人とのお出かけに</button>
+      <button class="option-btn" data-type="C">お仕事やきちんとした日に</button>
+      <button class="option-btn" data-type="D">おしゃれを楽しみたい日に</button>
+      <button class="option-btn" data-type="E">デートや華やかな予定の日に</button>
+      <button class="option-btn" data-type="F">メイクを軽くしたい日や、素の唇で過ごしたい日に</button>
+    </div>
+    <button class="back-link" data-back="screen-q1">＜ 前の質問に戻る</button>
+  </div>
+</section>
+
+<!-- ============ Q3 ============ -->
+<section class="screen quiz-screen" id="screen-q3">
+  <div class="card">
+    <h1 class="q-number">Q3</h1>
+    <p class="q-text">リップ選びで一番大切なのは？</p>
+    <div class="options" data-question="q3">
+      <button class="option-btn" data-type="A">素の唇になじむこと</button>
+      <button class="option-btn" data-type="B">顔色が明るく見えること</button>
+      <button class="option-btn" data-type="C">上品で使いやすいこと</button>
+      <button class="option-btn" data-type="D">いつものメイクがおしゃれに見えること</button>
+      <button class="option-btn" data-type="E">ひと塗りで華やかになること</button>
+      <button class="option-btn" data-type="F">うるおいと自然なツヤを楽しめること</button>
+    </div>
+    <button class="back-link" data-back="screen-q2">＜ 前の質問に戻る</button>
+  </div>
+</section>
+
+<!-- ============ RESULT ============ -->
+<section class="screen result-screen" id="screen-result">
+  <div class="result-card">
+    <div class="result-header">
+      <h1>あなたにおすすめのリップ</h1>
+    </div>
+    <div class="result-body">
+      <div class="product-col">
+        <img id="result-product-img" src="" alt="">
+      </div>
+      <div class="info-col">
+        <img id="result-lip-img" src="" alt="" class="lip-photo">
+        <div class="swatch-row">
+          <span class="swatch" id="result-swatch"></span>
+          <span class="product-title">
+            <span id="result-code"></span>
+            <span id="result-name"></span>
+          </span>
+        </div>
+        <p class="product-desc" id="result-desc"></p>
+      </div>
+    </div>
+    <button class="retry-btn" id="retry-btn">もう一度診断する</button>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
